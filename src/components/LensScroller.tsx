@@ -84,27 +84,27 @@ export default function LensScroller() {
       <AnimatePresence mode="wait">
         <motion.div
           key={section.id}
-          className="absolute top-20 left-0 right-0 text-center z-20"
+          className="absolute top-18 md:top-20 left-0 right-0 text-center z-20"
           initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 30, opacity: 0 }}
           transition={{ duration: 0.4 }}
         >
           <h2
-            className="text-5xl md:text-7xl font-black uppercase tracking-tight"
+            className="text-3xl md:text-7xl font-black uppercase tracking-tight"
             style={{ color: section.color }}
           >
             {section.title}
           </h2>
-          <p className="text-gray-400 text-lg tracking-widest uppercase mt-1">
+          <p className="text-gray-400 text-sm md:text-lg tracking-widest uppercase mt-1">
             {section.subtitle}
           </p>
         </motion.div>
       </AnimatePresence>
 
-      {/* Center lens */}
-      <div className="absolute inset-0 flex items-center justify-center z-10">
-        <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden">
+      {/* Center lens -- on mobile, sits in upper portion to leave room for resume below */}
+      <div className="absolute inset-0 flex items-start md:items-center justify-center pt-[28%] md:pt-0 z-10">
+        <div className="relative w-40 h-40 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden">
           {/* Photo */}
           <AnimatePresence mode="wait">
             {showPhoto && (
@@ -142,7 +142,7 @@ export default function LensScroller() {
       <ResumePanel section={section} isActive={showPhoto && !isTransitioning} />
 
       {/* Section indicators */}
-      <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
+      <div className="absolute right-3 md:right-6 top-[30%] md:top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
         {resumeSections.map((s, i) => (
           <button
             key={s.id}
@@ -161,7 +161,7 @@ export default function LensScroller() {
       {/* Scroll hint */}
       {activeIndex === 0 && !isTransitioning && (
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 text-sm z-20"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 text-sm z-20 hidden md:block"
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         >
