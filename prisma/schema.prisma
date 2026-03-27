@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String?
+  passwordHash String?
+  role         String    @default("user")
+  createdAt    DateTime  @default(now())
+  orders       Order[]
+  downloads    Download[]
+}
+
+model Beat {
+  id             String      @id @default(cuid())
+  title          String
+  bpm            Int
+  key            String
+  genre          String
+  price          Float
+  premiumPrice   Float
+  exclusivePrice Float
+  audioUrl       String
+  imageUrl       String?
+  active         Boolean     @default(true)
+  createdAt      DateTime    @default(now())
+  orderItems     OrderItem[]
+}
+
+model Product {
+  id          String     @id @default(cuid())
+  title       String
+  description String
+  imageUrl    String?
+  fileUrl     String
+  minPrice    Float      @default(0)
+  active      Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  downloads   Download[]
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  userId          String?
+  email           String
+  total           Float
+  stripeSessionId String      @unique
+  status          String      @default("pending")
+  createdAt       DateTime    @default(now())
+  user            User?       @relation(fields: [userId], references: [id])
+  items           OrderItem[]
+}
+
+model OrderItem {
+  id          String @id @default(cuid())
+  orderId     String
+  beatId      String
+  licenseType String
+  price       Float
+  order       Order  @relation(fields: [orderId], references: [id])
+  beat        Beat   @relation(fields: [beatId], references: [id])
+}
+
+model Download {
+  id              String   @id @default(cuid())
+  productId       String
+  userId          String?
+  email           String
+  donationAmount  Float    @default(0)
+  stripeSessionId String?
+  createdAt       DateTime @default(now())
+  product         Product  @relation(fields: [productId], references: [id])
+  user            User?    @relation(fields: [userId], references: [id])
+}

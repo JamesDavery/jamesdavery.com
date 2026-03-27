@@ -1,0 +1,78 @@
+"use client";
+
+import { motion } from "framer-motion";
+import type { ResumeSection } from "@/data/resume";
+
+interface ResumePanelProps {
+  section: ResumeSection;
+  isActive: boolean;
+}
+
+export default function ResumePanel({ section, isActive }: ResumePanelProps) {
+  const leftItems = section.items.slice(0, Math.ceil(section.items.length / 2));
+  const rightItems = section.items.slice(Math.ceil(section.items.length / 2));
+
+  return (
+    <div className="absolute inset-0 flex items-center justify-between px-4 md:px-12 pointer-events-none">
+      {/* Left panel */}
+      <motion.div
+        className="w-[30%] max-w-sm pointer-events-auto"
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: isActive ? 0 : -100, opacity: isActive ? 1 : 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        {leftItems.map((cat) => (
+          <div key={cat.category} className="mb-6">
+            <h3
+              className="text-sm font-bold uppercase tracking-widest mb-2 border-b pb-1"
+              style={{ borderColor: section.color, color: section.color }}
+            >
+              {cat.category}
+            </h3>
+            {cat.entries.map((entry, i) => (
+              <div key={i} className="mb-2 text-sm">
+                <p className="font-semibold text-white">{entry.title}</p>
+                {entry.subtitle && (
+                  <p className="text-gray-400 text-xs">{entry.subtitle}</p>
+                )}
+                {entry.details && (
+                  <p className="text-gray-500 text-xs italic">{entry.details}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        ))}
+      </motion.div>
+
+      {/* Right panel */}
+      <motion.div
+        className="w-[30%] max-w-sm text-right pointer-events-auto"
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: isActive ? 0 : 100, opacity: isActive ? 1 : 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        {rightItems.map((cat) => (
+          <div key={cat.category} className="mb-6">
+            <h3
+              className="text-sm font-bold uppercase tracking-widest mb-2 border-b pb-1"
+              style={{ borderColor: section.color, color: section.color }}
+            >
+              {cat.category}
+            </h3>
+            {cat.entries.map((entry, i) => (
+              <div key={i} className="mb-2 text-sm">
+                <p className="font-semibold text-white">{entry.title}</p>
+                {entry.subtitle && (
+                  <p className="text-gray-400 text-xs">{entry.subtitle}</p>
+                )}
+                {entry.details && (
+                  <p className="text-gray-500 text-xs italic">{entry.details}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
