@@ -11,7 +11,7 @@ const apps = [
     description:
       "A web-based virtual mixer module for the Behringer X32 Compact. Control your mixer from any device with a browser — full channel strip, bus routing, effects, and metering.",
     image: "/images/x32-mixer.jpg",
-    href: "#",
+    href: "/apps/x32-mixer",
     tags: ["Audio", "Web App", "Real-time"],
   },
   {
