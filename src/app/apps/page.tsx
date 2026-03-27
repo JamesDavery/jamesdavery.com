@@ -19,7 +19,7 @@ const apps = [
     description:
       "Scan and coordinate wireless microphone frequencies to avoid interference. Supports multiple manufacturer frequency bands and real-time spectrum analysis.",
     image: "/images/freq-scanner.jpg",
-    href: "#",
+    href: "/apps/freq-scanner",
     tags: ["RF", "Audio", "Tool"],
   },
 ];
