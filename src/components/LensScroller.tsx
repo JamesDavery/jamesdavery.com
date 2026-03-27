@@ -84,7 +84,7 @@ export default function LensScroller() {
       <AnimatePresence mode="wait">
         <motion.div
           key={section.id}
-          className="absolute top-8 left-0 right-0 text-center z-20"
+          className="absolute top-20 left-0 right-0 text-center z-20"
           initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 30, opacity: 0 }}
