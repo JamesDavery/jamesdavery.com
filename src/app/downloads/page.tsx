@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ProductCard from "@/components/ProductCard";
 
 export const metadata: Metadata = {
-  title: "Downloads | James D. Avery",
+  title: "Downloads | James Davery",
   description: "Download software, instruments, and tools. Pay what you want.",
 };
 

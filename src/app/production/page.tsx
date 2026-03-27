@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Virtual Production Services | James D. Avery",
+  title: "Virtual Production Services | James Davery",
   description:
     "Professional virtual production, music studio, streaming, and film editing services.",
 };

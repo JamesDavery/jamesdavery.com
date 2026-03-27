@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Web Applications | James D. Avery",
-  description: "Web-based tools and applications built by James D. Avery.",
+  title: "Web Applications | James Davery",
+  description: "Web-based tools and applications built by James Davery.",
 };
 
 const apps = [

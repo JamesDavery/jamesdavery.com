@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="bg-[#0a0a0a] border-t border-white/10 py-8 px-4">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-gray-500 text-sm">
-          &copy; {new Date().getFullYear()} James D. Avery. All rights reserved.
+          &copy; {new Date().getFullYear()} James Davery. All rights reserved.
         </p>
         <div className="flex gap-6">
           <Link href="/" className="text-gray-500 hover:text-white text-sm transition-colors">

@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "James D. Avery | Actor, Technician, Creator",
+  title: "James Davery | Actor, Technician, Creator",
   description:
-    "Portfolio and services by James D. Avery — acting, tech theatre, virtual production, web applications, beats, and more.",
+    "Portfolio and services by James Davery — acting, tech theatre, virtual production, web applications, beats, and more.",
 };
 
 export default function RootLayout({
