@@ -14,6 +14,23 @@ export default function ResumePanel({ section, isActive }: ResumePanelProps) {
 
   return (
     <div className="absolute inset-0 flex items-center justify-between px-4 md:px-12 pointer-events-none">
+      {/* Award badge */}
+      {section.award && (
+        <motion.div
+          className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 pointer-events-auto"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: isActive ? 0 : 20, opacity: isActive ? 1 : 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
+          <div
+            className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-white border"
+            style={{ borderColor: section.color, backgroundColor: section.color + "22" }}
+          >
+            {section.award}
+          </div>
+        </motion.div>
+      )}
+
       {/* Left panel */}
       <motion.div
         className="w-[30%] max-w-sm pointer-events-auto"
